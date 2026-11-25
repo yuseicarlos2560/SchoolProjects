@@ -3,14 +3,14 @@
 ## Index
 
 1. [Scope and Sources](#1-scope-and-sources)
-2. [Overview](#2-overview)
-3. [Entry Strategy](#3-entry-strategy)
-4. [Market Entry](#4-market-entry)
-5. [Charging and Retail Expansion](#5-charging-and-retail-expansion)
-6. [Products and Customer Preferences](#6-products-and-customer-preferences)
-7. [Prices, Sales, and Competitors](#7-prices-sales-and-competitors)
-8. [Factories](#8-factories)
-9. [Charging Access for Other Brands](#9-charging-access-for-other-brands)
+2. [Mina] [Overview](#2-overview)
+3. [Koala Emoji lol] [Entry Strategy](#3-entry-strategy)
+4. [Koala Emoji lol] [Market Entry](#4-market-entry)
+5. [Christina] [Charging and Retail Expansion](#5-charging-and-retail-expansion)
+6. [Bonie] [Products and Customer Preferences](#6-products-and-customer-preferences)
+7. [Bonie] [Prices, Sales, and Competitors](#7-prices-sales-and-competitors)
+8. [Carlos] [Factories](#8-factories)
+9. [Christina] [Charging Access for Other Brands](#9-charging-access-for-other-brands)
 10. [Commercial Data Comparison](#10-commercial-data-comparison)
 11. [Data Gaps](#11-data-gaps)
 
