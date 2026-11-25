@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesla in Mexico — A Deep-Research Report (2015–2026)</title>
+<meta name="description" content="Market entry, localization, consumer perception and the Gigafactory Mexico trajectory: an evidence-based strategic analysis of Tesla in Mexico, 2015–2026.">
+<style>
+/* ============ tokens ============ */
+:root{
+  --paper:#fafaf7;
+  --ink:#17140e;
+  --ink-soft:#403a2f;
+  --muted:#6f685b;
+  --faint:#9a937f;
+  --line:#e3ded2;
+  --line-strong:#c9c2b2;
+  --accent:#9b1c1c;
+  --accent-soft:#f3e7e3;
+  --serif:Georgia,'Times New Roman',Times,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+::selection{background:var(--ink);color:var(--paper)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:10px 16px;z-index:100;font-family:var(--mono);font-size:12px;text-decoration:none}
+.skip-link:focus{left:0}
+
+/* ============ masthead ============ */
+.masthead{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--ink);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:12px 28px;
+}
+.masthead .brand{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--ink);text-decoration:none}
+.masthead .brand em{font-style:normal;color:var(--accent)}
+.masthead .meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media (max-width:640px){.masthead .meta{display:none}.masthead{padding:12px 16px}}
+
+/* ============ hero ============ */
+.hero{border-bottom:1px solid var(--ink);padding:64px 28px 56px}
+.hero-inner{max-width:1180px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(34px,5.2vw,64px);
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  max-width:20ch;
+  text-wrap:balance;
+}
+.hero h1 .it{font-style:italic}
+.hero .subtitle{
+  margin-top:22px;max-width:62ch;
+  font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:var(--ink-soft);
+}
+.hero-meta{
+  margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.hero-meta span{border-top:1px solid var(--line-strong);padding-top:8px}
+
+.exec{
+  margin-top:40px;
+  border:1px solid var(--ink);
+  padding:26px 28px;
+  max-width:900px;
+  background:var(--paper);
+}
+.exec .label{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.exec p{font-family:var(--serif);font-size:17.5px;line-height:1.62;color:var(--ink)}
+.exec p+p{margin-top:12px}
+
+.kpis{
+  margin-top:36px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border:1px solid var(--ink);
+}
+.kpi{padding:18px 20px;border-right:1px solid var(--line);min-height:118px;display:flex;flex-direction:column;justify-content:space-between}
+.kpi:last-child{border-right:none}
+.kpi .num{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+.kpi .num .u{font-size:.5em;color:var(--muted)}
+.kpi .cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:10px;line-height:1.5}
+.kpi.hot .num{color:var(--accent)}
+@media (max-width:760px){
+  .hero{padding:44px 16px 40px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi:nth-child(2n){border-right:none}
+  .kpi{border-bottom:1px solid var(--line)}
+  .kpi:nth-last-child(-n+2){border-bottom:none}
+}
+
+/* ============ page layout ============ */
+.layout{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:236px minmax(0,1fr);
+}
+.toc{
+  border-right:1px solid var(--line);
+  padding:36px 26px 60px 28px;
+}
+.toc-inner{position:sticky;top:96px}
+.toc .toc-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.toc ol{list-style:none}
+.toc a{
+  display:block;padding:7px 0 7px 14px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  border-left:1px solid var(--line);
+  line-height:1.45;min-height:32px;
+}
+.toc a:hover{color:var(--ink)}
+.toc a.active{color:var(--ink);border-left-color:var(--accent);font-weight:700}
+.toc a .n{color:var(--faint);margin-right:8px}
+.toc a.active .n{color:var(--accent)}
+.toc .toc-foot{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--faint);line-height:1.7;text-transform:uppercase}
+
+.main{padding:0 0 0 44px;min-width:0}
+@media (max-width:960px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .toc{border-right:none;border-bottom:1px solid var(--line);padding:0}
+  .toc-inner{position:static}
+  .toc .toc-label{display:none}
+  .toc ol{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 8px}
+  .toc a{border-left:none;border-bottom:2px solid transparent;padding:13px 12px;white-space:nowrap;min-height:44px;display:flex;align-items:center}
+  .toc a.active{border-bottom-color:var(--accent)}
+  .toc .toc-foot{display:none}
+  .main{padding:0}
+}
+
+/* ============ sections ============ */
+section.block{border-bottom:1px solid var(--ink);padding:56px 40px 60px 0}
+@media (max-width:960px){section.block{padding:44px 16px 48px}}
+.sec-head{margin-bottom:30px;max-width:72ch}
+.sec-head .sec-no{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.12;letter-spacing:-0.01em;text-wrap:balance}
+.sec-head .lede{margin-top:14px;font-size:17px;line-height:1.62;color:var(--ink-soft);max-width:66ch}
+h3.sub{font-family:var(--serif);font-weight:400;font-size:21px;margin:38px 0 12px;max-width:70ch}
+.prose{max-width:68ch}
+.prose p{margin-bottom:16px;color:var(--ink-soft)}
+.prose p strong{color:var(--ink);font-weight:650}
+.prose .num{font-variant-numeric:tabular-nums}
+.note{font-size:13.5px;color:var(--muted);max-width:68ch;border-top:1px solid var(--line);padding-top:10px;margin-top:22px}
+
+/* pull-quote */
+.pull{
+  margin:34px 0 6px;max-width:70ch;
+  border-left:3px solid var(--accent);
+  padding:4px 0 4px 22px;
+  font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.5;color:var(--ink);
+}
+.pull cite{display:block;margin-top:10px;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ============ profile cards ============ */
+.profiles{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink);margin-top:8px}
+.profile{padding:24px 22px 26px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:0}
+.profile:last-child{border-right:none}
+.profile .tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.profile .monogram{
+  width:52px;height:52px;border:1px solid var(--ink);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;margin-bottom:14px;background:var(--paper);
+}
+.profile h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.2}
+.profile .role{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:8px 0 14px;line-height:1.6}
+.profile p{font-size:14.5px;line-height:1.62;color:var(--ink-soft);margin-bottom:12px}
+.profile ul{list-style:none;margin-top:auto;border-top:1px solid var(--line);padding-top:12px}
+.profile li{font-size:13px;color:var(--muted);padding:5px 0;display:flex;gap:10px;line-height:1.5}
+.profile li b{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.06em;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:960px){
+  .profiles{grid-template-columns:1fr}
+  .profile{border-right:none;border-bottom:1px solid var(--line)}
+  .profile:last-child{border-bottom:none}
+}
+
+/* ============ matrix table ============ */
+.table-wrap{overflow-x:auto;border:1px solid var(--ink);margin-top:8px}
+table.matrix{width:100%;border-collapse:collapse;min-width:720px;background:var(--paper)}
+.matrix caption{caption-side:top;text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);padding:12px 16px;border-bottom:1px solid var(--line)}
+.matrix th{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  text-align:left;color:var(--paper);background:var(--ink);
+  padding:12px 16px;font-weight:400;border-right:1px solid #3a352b;vertical-align:bottom;
+}
+.matrix th:last-child{border-right:none}
+.matrix td{padding:14px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top;font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
+.matrix td:last-child{border-right:none}
+.matrix tr:last-child td{border-bottom:none}
+.matrix td:first-child{font-weight:650;color:var(--ink)}
+.matrix td .st{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border:1px solid var(--line-strong);white-space:nowrap}
+.matrix td .st.bad{color:var(--accent);border-color:var(--accent)}
+.matrix td .st.good{color:var(--ink);border-color:var(--ink)}
+
+/* ============ timeline ============ */
+.timeline{margin-top:10px;border-left:1px solid var(--ink);padding-left:0;max-width:78ch}
+.tl-item{position:relative;padding:0 0 30px 34px}
+.tl-item:last-child{padding-bottom:4px}
+.tl-item::before{
+  content:"";position:absolute;left:-5px;top:7px;
+  width:9px;height:9px;background:var(--paper);border:1px solid var(--ink);transform:rotate(45deg);
+}
+.tl-item.hot::before{background:var(--accent);border-color:var(--accent)}
+.tl-item .tl-date{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.tl-item:not(.hot) .tl-date{color:var(--muted)}
+.tl-item .tl-title{font-family:var(--serif);font-size:18.5px;line-height:1.3;margin-bottom:5px}
+.tl-item p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:62ch}
+
+/* ============ data dashboard ============ */
+.dash-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border:1px solid var(--ink);margin-bottom:36px}
+.chart{margin:0 0 38px;max-width:78ch}
+.chart .chart-title{font-family:var(--serif);font-size:18.5px;margin-bottom:3px}
+.chart .chart-sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:16px}
+.bars{border-left:1px solid var(--ink);display:flex;flex-direction:column;gap:12px;padding:6px 0 6px 0}
+.bar-row{display:grid;grid-template-columns:150px 1fr 92px;gap:14px;align-items:center}
+.bar-row .b-label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.35}
+.bar-row .b-track{height:26px;position:relative;background:transparent}
+.bar-row .b-fill{position:absolute;left:0;top:0;bottom:0;background:var(--ink);min-width:2px}
+.bar-row .b-fill.acc{background:var(--accent)}
+.bar-row .b-fill.ghost{background:repeating-linear-gradient(45deg,transparent,transparent 3px,var(--line-strong) 3px,var(--line-strong) 4px)}
+.bar-row .b-val{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.bar-row .b-val small{color:var(--muted);font-size:10.5px}
+.chart .src{font-size:12px;color:var(--faint);margin-top:10px}
+@media (max-width:640px){
+  .bar-row{grid-template-columns:88px minmax(0,1fr) auto;gap:10px}
+  .bar-row .b-label{font-size:10px}
+  .bar-row .b-val{white-space:normal;font-size:11px;line-height:1.4;max-width:96px}
+  .bar-row .b-val small{display:block}
+}
+
+/* ============ lessons ============ */
+.lessons{border:1px solid var(--ink)}
+.lesson{display:grid;grid-template-columns:64px 1fr;border-bottom:1px solid var(--line)}
+.lesson:last-child{border-bottom:none}
+.lesson .l-no{font-family:var(--serif);font-size:26px;padding:20px 0 20px 20px;color:var(--accent);font-variant-numeric:tabular-nums}
+.lesson .l-body{padding:20px 22px 20px 6px}
+.lesson h3{font-family:var(--serif);font-weight:400;font-size:18.5px;margin-bottom:6px}
+.lesson p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:64ch}
+@media (max-width:640px){.lesson{grid-template-columns:44px 1fr}.lesson .l-no{padding-left:12px;font-size:20px}}
+
+/* ============ sources footer ============ */
+.sources{background:var(--ink);color:var(--paper);padding:56px 28px 20px}
+.sources .src-inner{max-width:1180px;margin:0 auto}
+.sources .sec-no{color:var(--paper);opacity:.6}
+.sources h2{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.6vw,34px);margin-bottom:8px}
+.sources .lede{color:#bdb5a4;font-size:15px;max-width:66ch;margin-bottom:34px}
+.src-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 44px}
+.src-group h3{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8f8776;border-bottom:1px solid #3a352b;padding-bottom:10px;margin-bottom:6px;font-weight:400}
+.src-group ol{list-style:none;counter-reset:src}
+.src-group li{
+  counter-increment:src;position:relative;
+  padding:10px 0 10px 34px;border-bottom:1px solid #2a261e;
+  font-size:13.5px;line-height:1.5;color:#cfc8b8;
+}
+.src-group li::before{content:counter(src,decimal-leading-zero);position:absolute;left:0;top:12px;font-family:var(--mono);font-size:10.5px;color:#8f8776}
+.src-group a{color:var(--paper);text-decoration-color:#5c5546}
+.src-group a:hover{color:#fff;text-decoration-color:var(--paper)}
+.src-group .outlet{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8f8776;display:block;margin-top:2px}
+.colophon{
+  margin-top:44px;border-top:1px solid #3a352b;padding-top:20px;
+  display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8f8776;line-height:1.8;
+}
+.disclaimer{margin-top:14px;font-size:12.5px;color:#8f8776;max-width:80ch;line-height:1.7}
+@media (max-width:640px){.sources{padding:44px 16px 20px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <a class="brand" href="#top">TESLA<em>·</em>MX <span aria-hidden="true">/</span> RESEARCH DOSSIER</a>
+  <span class="meta">Deep Research · Automotive Strategy · Nov 2026</span>
+</header>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="kicker">Deep-Research Report — Automotive / Latin America</p>
+    <h1>Tesla in Mexico: the decade of the <span class="it">Gigafactory that wasn't</span></h1>
+    <p class="subtitle">Market entry, localization, consumer perception and the rise and stall of Gigafactory Mexico — an evidence-based strategic history of Tesla's Mexican venture from the first Model S deliveries in 2015 to the indefinite pause of 2026.</p>
+    <div class="hero-meta">
+      <span>Published · November 2026</span>
+      <span>Coverage · 2015 — 2026</span>
+      <span>60 verified sources</span>
+      <span>Reading time · ~25 min</span>
+    </div>
+
+    <div class="exec">
+      <p class="label">Executive Summary</p>
+      <p>Tesla's decade in Mexico is two ventures running in parallel: a <strong>commercial operation that quietly succeeded</strong> — seven stores, Latin America's first Supercharger network, and a Model 3 price cut of roughly 29% between early 2024 and 2025 — and a <strong>manufacturing megaproject that never broke ground</strong>. Announced with presidential fanfare on February 28, 2023 for Santa Catarina, Nuevo León, Gigafactory Mexico's headline investment swelled from US$5 billion to US$15 billion before high interest rates slowed it in October 2023 and U.S. tariff risk froze it on July 23, 2024. By 2026 the 1,561-hectare site sat overgrown, its signage removed, entangled in land litigation — while Mexico's electrified-vehicle market grew to 12.8% of new-car sales without it.</p>
+    </div>
+
+    <div class="kpis" role="group" aria-label="Key figures">
+      <div class="kpi hot"><span class="num">US$15<span class="u">bn</span></span><span class="cap">Peak headline investment incl. suppliers — never deployed</span></div>
+      <div class="kpi"><span class="num">0</span><span class="cap">Vehicles built in Santa Catarina; plant on indefinite hold</span></div>
+      <div class="kpi"><span class="num">7</span><span class="cap">Tesla stores in Mexico by 2026: CDMX ×3, GDL ×2, MTY, Mérida</span></div>
+      <div class="kpi"><span class="num">35</span><span class="cap">Supercharger stations — LatAm's first network, est. 2016</span></div>
+      <div class="kpi"><span class="num">12.8<span class="u">%</span></span><span class="cap">Electrified share of new-car sales, Jan–Aug 2026</span></div>
+      <div class="kpi hot"><span class="num">−29<span class="u">%</span></span><span class="cap">Model 3 entry price cut, early 2024 → 2025 (MXN)</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-inner">
+      <p class="toc-label">Contents</p>
+      <ol>
+        <li><a href="#actors"><span class="n">01</span>Key Actors</a></li>
+        <li><a href="#challenges"><span class="n">02</span>Entry Challenges</a></li>
+        <li><a href="#matrix"><span class="n">03</span>Problem → Solution</a></li>
+        <li><a href="#playbook"><span class="n">04</span>Localization Playbook</a></li>
+        <li><a href="#timeline"><span class="n">05</span>Timeline 2015–2026</a></li>
+        <li><a href="#data"><span class="n">06</span>Data &amp; Numbers</a></li>
+        <li><a href="#lessons"><span class="n">07</span>Lessons Learned</a></li>
+        <li><a href="#sources"><span class="n">08</span>Sources</a></li>
+      </ol>
+      <p class="toc-foot">Self-contained file.<br>No external assets.<br>Citations inline.</p>
+    </div>
+  </nav>
+
+  <main class="main" id="main">
+
+  <!-- ================= 01 KEY ACTORS ================= -->
+  <section class="block" id="actors">
+    <div class="sec-head">
+      <p class="sec-no">Section 01 — People</p>
+      <h2>Key actors &amp; leadership roles</h2>
+      <p class="lede">Three people frame Tesla's Mexican decade: a Mexico City-born designer who shaped every object Tesla makes, a country manager imported to professionalize sales through the hardest years, and a CEO whose phone calls with two presidents decided — and then undecided — the factory.</p>
+    </div>
+
+    <div class="profiles">
+      <article class="profile">
+        <p class="tag">Global Design · Mexican Roots</p>
+        <div class="monogram" aria-hidden="true">JV</div>
+        <h3>Javier Verdura</h3>
+        <p class="role">Tesla Global Director of Product Design · 2012 — present</p>
+        <p>Born in Mexico City and trained at ArtCenter (BS Product Design, 1991), Verdura has directed Tesla's product design since 2012 — the Supercharger stalls, Powerwall, Solar Roof and hundreds of branded objects. His credo: <em>"if you can't manufacture what you create, it is not worth designing."</em></p>
+        <p>He never severed his Mexican ties: industrial-design studios at UDEM ("Proyecto Helios," 2020), a WDO keynote in Toluca (2017), a UDEM Global Community Professorship (2023), and the Oaxaca barro-negro Tesla Mezcal bottle he designed "in honor of my Mexican roots" (2024).</p>
+        <ul>
+          <li><b>130+</b> patents; 3 Red Dot, 7 Good Design awards</li>
+          <li><b>2016</b> CNET: 20 most influential Latinos in tech</li>
+          <li><b>Note</b> design leadership — not Tesla México operations</li>
+        </ul>
+      </article>
+
+      <article class="profile">
+        <p class="tag">Commercial Operations · Mexico</p>
+        <div class="monogram" aria-hidden="true">TG</div>
+        <h3>Teresa Gutiérrez Smith</h3>
+        <p class="role">Country Manager / CEO, Tesla México &amp; LatAm · Jan 2024 — 2026</p>
+        <p>Named Tesla México's country manager on January 22–23, 2024, arriving from Rappi México's top job. Twenty years across P&amp;G, McKinsey, Nestlé and Mattel; chemical engineering at Universidad Iberoamericana, MBA at IPADE — a consumer-scaling profile, not a factory-builder's.</p>
+        <p>Her remit — "a greener Latin America" — covered sales, brand and charging growth while the Gigafactory drifted. Forbes México listed her among its 100 most powerful women of 2025; by 2026, conference bios describe her as <em>former</em> country manager, her tenure bracketing the pause era almost exactly.</p>
+        <ul>
+          <li><b>Jan 2024</b> appointed, announced by AMMJE CDMX</li>
+          <li><b>2025</b> Forbes México "100 Most Powerful Women"</li>
+          <li><b>2026</b> exits; no public successor announced</li>
+        </ul>
+      </article>
+
+      <article class="profile">
+        <p class="tag">The Counterparties</p>
+        <div class="monogram" aria-hidden="true">EM</div>
+        <h3>Elon Musk &amp; the State</h3>
+        <p class="role">AMLO · Gov. Samuel García · Min. Marcelo Ebrard</p>
+        <p>Governor Samuel García courted Tesla through late 2022; President López Obrador publicly resisted over Nuevo León's water crisis. The impasse broke in a Musk–AMLO call on Feb 27–28, 2023: recycled process water, and the plant was announced the next morning.</p>
+        <p>The decisive counterparty was never in the room: Donald Trump's tariff pledge became Musk's stated reason to pause — "it doesn't make sense to invest a lot in Mexico." After Trump's win, Economy Minister Ebrard conceded the decision hinged on Chinese competition, not Mexican offers.</p>
+        <ul>
+          <li><b>Feb 2023</b> AMLO announcement; García: "GANAMOS TODOS"</li>
+          <li><b>Jul 2024</b> Musk pauses project on Q2 earnings call</li>
+          <li><b>Nov 2024</b> Ebrard seeks meeting; none materializes</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="prose">
+      <h3 class="sub">Why the people mattered more than the press releases</h3>
+      <p>Verdura's significance is structural rather than operational: he embodies the pipeline of Mexican design-and-manufacturing talent into Tesla's global hardware organization — the <strong>design-to-manufacture bridge</strong> — and his teaching in Monterrey built human-capital links in the very metro where the Gigafactory was announced. Gutiérrez represents the opposite vector, a world-class Mexican commercial operator imported to run the market. That Tesla needed her profile — not an industrial one — in January 2024 was itself evidence the factory was already wobbling. And the Musk–AMLO–García triangle shows how Tesla site selection actually works: presidential choreography, subnational incentive packages, and a single earnings-call sentence that can freeze everything.</p>
+    </div>
+  </section>
+
+  <!-- ================= 02 CHALLENGES ================= -->
+  <section class="block" id="challenges">
+    <div class="sec-head">
+      <p class="sec-no">Section 02 — The Market Problem</p>
+      <h2>Early entry challenges &amp; consumer perception</h2>
+      <p class="lede">Tesla entered a country where the best-selling cars cost a tenth of a Model S, where public charging barely existed, and where the EV conversation was a premium curiosity. Four structural walls defined the first decade.</p>
+    </div>
+
+    <div class="prose">
+      <h3 class="sub">A premium import in a price-first market</h3>
+      <p>Tesla's foundational problem was arithmetic. It entered in <strong>December 2015</strong> selling the Model S through a direct channel from Santa Fe, Mexico City, at prices around two million pesos — every car an import, exposed to the peso-dollar rate, U.S. logistics and double-digit Mexican financing costs. Even after the 2024 cuts, the entry Model 3 at <strong>749,900 pesos</strong> remained more than double Mexico's volume sellers, while roughly <strong>41% of 2025 EV demand concentrated below US$30,000</strong> — the BYD Dolphin and Nissan Leaf band that Tesla does not serve. Total-cost-of-ownership arguments on fuel and maintenance collided with thin consumer credit and the absence, until 2025's Plan México measures, of any federal purchase incentive comparable to the U.S. tax credit.</p>
+
+      <h3 class="sub">Charging deserts and grid constraints</h3>
+      <p>Tesla installed <strong>Latin America's first Superchargers in Mexico in 2016</strong> on the Cuernavaca corridor, and reached about 35 stations by late 2024 — but coverage long remained a Mexico City–Guadalajara–Monterrey affair. The wider ecosystem was thinner still: the EMA counted only <strong>4,060 public charging points nationwide at end-2025</strong> against 52,000+ private ones, making Mexican EV ownership overwhelmingly a home-charging privilege of households with off-street parking. At industrial scale the constraint was harder: the 2022 Nuevo León water crisis — dams near empty, Monterrey rationed — was the factual basis of AMLO's initial refusal, and the state had to fund a 16.9&nbsp;km treated-water pipeline just to make Santa Catarina theoretically viable.</p>
+
+      <h3 class="sub">The Chinese pincer and the hybrid middle</h3>
+      <p>While Tesla held the premium niche, the center was captured twice over. Japanese brands consolidated hybrids — nearly <strong>79% of "eco" vehicle sales in early 2025</strong>, familiar and charging-independent — while Chinese brands attacked on price: <strong>BYD sold ≈40,000 units in 2024 and ≈85,000 in 2025</strong>, and Chinese marques collectively took about 15% of the total market (≈244,000 units) from under 1% five years earlier. J.D. Power measured Mexican transaction-price inflation decelerating from 16.2% in 2023 to 3.7% in 2025 under that pressure. Tesla was no longer the default EV choice, but one premium option among BYD's Dolphin–Seal–Sealion ladder.</p>
+
+      <h3 class="sub">Policy friction and the tariff overhang</h3>
+      <p>Domestic policy was permissive but thin — ISAN exemptions, ISR deductibility, toll perks — while the decisive friction came from the north: from February–April 2025 the second Trump administration layered <strong>25% Section 232 tariffs on imported vehicles</strong> (≈15% effective on Mexican content), 50% on steel and aluminum, and 25% on trucks. Mexican light-vehicle exports fell 2.7% in 2025 and the sector shed ≈60,000 jobs entering the July 2026 USMCA review. Mexico's own response — a <strong>50% tariff on non-FTA EV imports from January 1, 2026</strong> — paradoxically favored U.S.-built Teslas over BYD while doing nothing to revive the Gigafactory's export logic.</p>
+
+      <div class="pull">
+        "Tesla is paused… it doesn't make sense to invest a lot in Mexico if [tariffs] happen."
+        <cite>Elon Musk — Q2 2024 earnings call, July 23, 2024 (paraphrased in coverage)</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 03 MATRIX ================= -->
+  <section class="block" id="matrix">
+    <div class="sec-head">
+      <p class="sec-no">Section 03 — Diagnosis to Response</p>
+      <h2>Problem → solution matrix</h2>
+      <p class="lede">Each structural challenge met a specific strategic response — some effective, some overtaken by events. The matrix condenses a decade of adaptation.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="matrix">
+        <caption>Tesla México · Challenge / Response / Outcome · 2015–2026</caption>
+        <thead>
+          <tr><th scope="col">Problem</th><th scope="col">Strategic response</th><th scope="col">Outcome &amp; status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ultra-premium import perception; MXN/USD exposure</td>
+            <td>Price laddering (−29% on Model 3, 2024–25), in-house financing, trade-ins, online-first sales</td>
+            <td><span class="st good">Partial win</span> Premium niche secured; sub-US$30k demand core still out of reach</td>
+          </tr>
+          <tr>
+            <td>Charging deserts outside big-city triangle</td>
+            <td>Corridor-first Supercharger build-out from 2016; 35 stations by 2024</td>
+            <td><span class="st good">Effective</span> Only cross-country fast network; opened to rivals Feb 2026</td>
+          </tr>
+          <tr>
+            <td>Low EV penetration; hybrid-dominated "eco" market</td>
+            <td>Brand cultivation — flagship retail, pop-ups, media "Tesla effect"; TCO messaging</td>
+            <td><span class="st good">Effective</span> Tesla normalized EVs culturally; volumes stay low-thousands</td>
+          </tr>
+          <tr>
+            <td>Chinese price war (BYD ≈85k units in 2025)</td>
+            <td>Entry-price cuts; Mexico's 50% non-FTA tariff (Jan 2026) shields U.S.-built imports</td>
+            <td><span class="st">Contested</span> Margin compressed; tariff shifts competitive field in Tesla's favor</td>
+          </tr>
+          <tr>
+            <td>Water scarcity &amp; grid stress at Santa Catarina</td>
+            <td>Recycled-water pledge; state-funded 16.9 km pipeline, access roads, land-use permits</td>
+            <td><span class="st bad">Moot</span> Permits and works delivered; factory never broke ground</td>
+          </tr>
+          <tr>
+            <td>U.S. tariff risk on Mexican-built exports</td>
+            <td>Capital freeze: project "paused" July 2024 pending election, then indefinite hold</td>
+            <td><span class="st bad">Stranded</span> US$15bn headline investment never deployed; site dormant 2026</td>
+          </tr>
+          <tr>
+            <td>No factory → no local-content economics</td>
+            <td>Talent &amp; standards localization instead: NACS as de facto standard, UDEM design pipeline</td>
+            <td><span class="st good">Durable</span> Infrastructure leadership outlasts vehicle-sales cycle</td>
+          </tr>
+          <tr>
+            <td>Data opacity (no INEGI/AMIA reporting)</td>
+            <td>None — Tesla and BYD withhold Mexican sales data; analysts triangulate</td>
+            <td><span class="st bad">Unresolved</span> Weakens market evidence base amid USMCA review</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 04 PLAYBOOK ================= -->
+  <section class="block" id="playbook">
+    <div class="sec-head">
+      <p class="sec-no">Section 04 — Strategy</p>
+      <h2>Strategic solutions &amp; the localization playbook</h2>
+      <p class="lede">Unable — and ultimately unwilling — to build in Mexico, Tesla localized everything except the factory: retail, charging standards, pricing and talent. The Gigafactory, meanwhile, followed a traceable causal chain from announcement to abandonment.</p>
+    </div>
+
+    <div class="prose">
+      <h3 class="sub">Retail and charging localization without a factory</h3>
+      <p>The retail footprint grew from the 2015 Santa Fe flagship to <strong>seven stores by 2026</strong> — three in Mexico City, two in Guadalajara, Monterrey and Mérida — wrapped in an online-first sales model. Charging followed the same hub-and-corridor logic, and in February 2026 Tesla made its most significant strategic softening: <strong>opening 19 Supercharger sites (88 stalls) to non-Tesla vehicles</strong>, starting with Audi and Porsche via NACS — monetizing idle capacity and cementing its connector as the national standard. Pricing proved unusually elastic for a premium brand: the base Model 3 fell from 881,900 to 749,900 pesos in August 2024 and toward ≈626,500 pesos in 2025 — the classic emerging-market playbook of harvesting early adopters, then stair-stepping down as competition demands.</p>
+
+      <h3 class="sub">How the Gigafactory unraveled</h3>
+      <p>Santa Catarina was three projects on different clocks — Tesla's next-gen vehicle program, a state infrastructure package, and a supplier-ecosystem bet. The escalation of figures tells its own story: <strong>US$5bn</strong> (Delgado, March 2023) → <strong>≈US$10bn</strong> (federal/Reuters) → <strong>US$15bn including suppliers</strong> (García). The unravelling was equally sequential: May 2023, Isaacson's biography revealed Musk already weighing an Austin-first production line; September 2023, the "Project Mario" environmental filing was approved even as Chinese suppliers signaled 2026–27 start dates; October 2023, Musk explicitly blamed <strong>high interest rates</strong> — "people can't afford to buy the cars" — for slowing the project; July 23, 2024, the formal pause over tariff risk. By 2025, Tesla's annual report listed factories only in the U.S., China and Germany.</p>
+
+      <h3 class="sub">What actually localized</h3>
+      <p>The deepest localization needed no concrete. Tesla's network made <strong>NACS Mexico's de facto fast-charging standard</strong>, with Ford, GM, Volvo, Audi and Porsche negotiating access — infrastructure leadership that outlasts the sales cycle. The announcement alone pulled record FDI into Nuevo León and scaled university electromobility programs; Verdura's UDEM professorship and Toluca talks built the design-talent bridge. Meanwhile Mexican industrial policy moved on: the January 2025 Plan México decree granted an <strong>86% immediate tax deduction for electromobility investment</strong>, and the state-backed Olinia project launched a domestic mini-EV — the sector decoupling from Tesla's timeline.</p>
+    </div>
+  </section>
+
+  <!-- ================= 05 TIMELINE ================= -->
+  <section class="block" id="timeline">
+    <div class="sec-head">
+      <p class="sec-no">Section 05 — Chronology</p>
+      <h2>Timeline of milestones, 2015–2026</h2>
+      <p class="lede">From the first Model S sold in Santa Fe to the overgrown Santa Catarina site — eleven years, two ventures, one stalled gigaproject. Red markers denote Gigafactory inflection points.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item"><p class="tl-date">Dec 2015</p><p class="tl-title">Tesla enters Mexico</p><p>Model S sales begin through a direct channel in Santa Fe, Mexico City — prices near two million pesos define the brand as ultra-premium from day one.</p></div>
+      <div class="tl-item"><p class="tl-date">2016</p><p class="tl-title">Latin America's first Superchargers</p><p>Cuernavaca corridor stations open — the region's first fast-charging infrastructure, years ahead of any rival.</p></div>
+      <div class="tl-item"><p class="tl-date">Jun 2021</p><p class="tl-title">Retail expansion reaches Mérida</p><p>A Yucatán store extends the footprint beyond the central corridor; 21 Supercharger stations operate nationwide.</p></div>
+      <div class="tl-item hot"><p class="tl-date">Oct 2022</p><p class="tl-title">Musk scouts Nuevo León</p><p>Governor Samuel García's courtship intensifies; the Santa Catarina site near km 51 of the Monterrey–Saltillo highway emerges — seven hours from Austin.</p></div>
+      <div class="tl-item hot"><p class="tl-date">Feb 27–28, 2023</p><p class="tl-title">The Musk–AMLO call &amp; announcement</p><p>Musk pledges recycled process water; AMLO announces the plant the next morning. García: "Ganó México, Ganó NL, GANAMOS TODOS."</p></div>
+      <div class="tl-item hot"><p class="tl-date">Mar 1, 2023</p><p class="tl-title">Investor Day — US$5bn figure</p><p>Tesla formally presents Giga Mexico in Austin; Deputy FM Delgado cites ~US$5bn after "14 months of work."</p></div>
+      <div class="tl-item hot"><p class="tl-date">May 2023</p><p class="tl-title">The Austin pivot surfaces</p><p>Isaacson's biography reveals Musk weighing first next-gen production in Austin, not Santa Catarina.</p></div>
+      <div class="tl-item hot"><p class="tl-date">Sep–Oct 2023</p><p class="tl-title">"Project Mario" approved — then braked</p><p>Environmental manifest filed and approved; suppliers privately signal 2026–27; Musk cites high interest rates to slow the project. Headline figure now ~US$10bn.</p></div>
+      <div class="tl-item hot"><p class="tl-date">Dec 2023</p><p class="tl-title">Permits &amp; incentives locked</p><p>Land-use change approved; Nuevo León confirms 2.63bn pesos (≈US$143–153m) in state incentives.</p></div>
+      <div class="tl-item"><p class="tl-date">Jan 22–23, 2024</p><p class="tl-title">Gutiérrez takes the Mexico helm</p><p>Teresa Gutiérrez Smith, ex-Rappi México CEO, named Tesla México country manager — a commercial hire for a drifting industrial project.</p></div>
+      <div class="tl-item hot"><p class="tl-date">Mar 2024</p><p class="tl-title">The state builds anyway</p><p>Nuevo León starts the 16.9 km treated-water pipeline and access roads — public works proceeding against a frozen private commitment.</p></div>
+      <div class="tl-item hot"><p class="tl-date">Jul 23, 2024</p><p class="tl-title">The formal pause</p><p>On the Q2 earnings call, Musk pauses Giga Mexico over threatened U.S. tariffs on Mexican-built cars. Headline figure by now: US$15bn including suppliers.</p></div>
+      <div class="tl-item hot"><p class="tl-date">Nov 2024</p><p class="tl-title">Ebrard's outreach fails</p><p>After Trump's victory, Economy Minister Ebrard seeks a Musk meeting, conceding Tesla's constraint is Chinese competition, not Mexican offers.</p></div>
+      <div class="tl-item"><p class="tl-date">Jan 2025</p><p class="tl-title">Plan México pivots policy</p><p>Sheinbaum's decree grants an 86% immediate deduction for electromobility investment; the Olinia mini-EV program launches — Mexico stops waiting for Tesla.</p></div>
+      <div class="tl-item hot"><p class="tl-date">2025</p><p class="tl-title">The hold hardens</p><p>Tesla's annual report lists factories only in the U.S., China and Germany. Mexican EV sales grow regardless: 9.7% electrified share; BYD ≈85,000 units.</p></div>
+      <div class="tl-item"><p class="tl-date">Feb 2026</p><p class="tl-title">Superchargers open to rivals</p><p>19 sites / 88 stalls open to Audi and Porsche via NACS — the network becomes a multi-brand utility.</p></div>
+      <div class="tl-item hot"><p class="tl-date">2026</p><p class="tl-title">Indefinite pause; dormant site</p><p>1,561 hectares overgrown, signage removed, land parcels in litigation; El Debate catalogues "8 reasons" for the indefinite pause as the July USMCA review dominates the sector.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 06 DATA ================= -->
+  <section class="block" id="data">
+    <div class="sec-head">
+      <p class="sec-no">Section 06 — The Numbers</p>
+      <h2>Data &amp; numbers dashboard</h2>
+      <p class="lede">The decade in five charts. All values from the cited sources in Section 08; Tesla and BYD do not report Mexican sales to INEGI/AMIA, so competitive volumes are triangulated press figures.</p>
+    </div>
+
+    <div class="chart" aria-label="Electrified vehicle share of new light-vehicle sales in Mexico">
+      <p class="chart-title">Electrified share of new-car sales (HEV+PHEV+BEV)</p>
+      <p class="chart-sub">Mexico · % of new light vehicles · INEGI via TResearch</p>
+      <div class="bars">
+        <div class="bar-row"><span class="b-label">2016</span><span class="b-track"><span class="b-fill ghost" style="width:4%"></span></span><span class="b-val">0.5%</span></div>
+        <div class="bar-row"><span class="b-label">2024</span><span class="b-track"><span class="b-fill" style="width:65%"></span></span><span class="b-val">8.3%</span></div>
+        <div class="bar-row"><span class="b-label">2025</span><span class="b-track"><span class="b-fill" style="width:76%"></span></span><span class="b-val">9.7%</span></div>
+        <div class="bar-row"><span class="b-label">2026 · Jan–Aug</span><span class="b-track"><span class="b-fill acc" style="width:100%"></span></span><span class="b-val">12.8%</span></div>
+      </div>
+      <p class="src">Source: TResearch on INEGI data. Pure BEVs remain a small fraction; hybrids were ~79% of "eco" sales in early 2025 (AMIA/Remedia).</p>
+    </div>
+
+    <div class="chart" aria-label="Gigafactory Mexico headline investment figures">
+      <p class="chart-title">Gigafactory headline investment — as announced</p>
+      <p class="chart-sub">US$ billions · figures escalated with each official retelling · none deployed</p>
+      <div class="bars">
+        <div class="bar-row"><span class="b-label">Mar 2023 · Delgado</span><span class="b-track"><span class="b-fill" style="width:33%"></span></span><span class="b-val">US$5bn</span></div>
+        <div class="bar-row"><span class="b-label">2023 · Federal/Reuters</span><span class="b-track"><span class="b-fill" style="width:67%"></span></span><span class="b-val">≈US$10bn</span></div>
+        <div class="bar-row"><span class="b-label">2023–24 · García</span><span class="b-track"><span class="b-fill acc" style="width:100%"></span></span><span class="b-val">US$15bn <small>incl. suppliers</small></span></div>
+        <div class="bar-row"><span class="b-label">Actually built</span><span class="b-track"><span class="b-fill ghost" style="width:2%"></span></span><span class="b-val">US$0</span></div>
+      </div>
+      <p class="src">Sources: Bloomberg Línea; Reuters via Manufacturing Digital; Mexico News Daily. State incentives confirmed: 2.63bn pesos ≈ US$143–153m.</p>
+    </div>
+
+    <div class="chart" aria-label="Tesla Model 3 entry price in Mexico">
+      <p class="chart-title">Model 3 entry price — the price ladder down</p>
+      <p class="chart-sub">Mexico · MXN thousands · base trim</p>
+      <div class="bars">
+        <div class="bar-row"><span class="b-label">Early 2024</span><span class="b-track"><span class="b-fill" style="width:100%"></span></span><span class="b-val">$881.9k</span></div>
+        <div class="bar-row"><span class="b-label">Aug 2024</span><span class="b-track"><span class="b-fill" style="width:85%"></span></span><span class="b-val">$749.9k</span></div>
+        <div class="bar-row"><span class="b-label">2025</span><span class="b-track"><span class="b-fill acc" style="width:71%"></span></span><span class="b-val">≈$626.5k</span></div>
+      </div>
+      <p class="src">Sources: Motor Pasión; ADN40. Cumulative cut ≈29% — still above the sub-US$30k band where ~41% of EV demand concentrates.</p>
+    </div>
+
+    <div class="chart" aria-label="Charging infrastructure in Mexico">
+      <p class="chart-title">Charging infrastructure — thin but compounding</p>
+      <p class="chart-sub">Public charging positions, Mexico · EMA Barometer</p>
+      <div class="bars">
+        <div class="bar-row"><span class="b-label">End-2024</span><span class="b-track"><span class="b-fill" style="width:82%"></span></span><span class="b-val">≈3,330</span></div>
+        <div class="bar-row"><span class="b-label">End-2025</span><span class="b-track"><span class="b-fill acc" style="width:100%"></span></span><span class="b-val">4,060 <small>+22% y/y</small></span></div>
+        <div class="bar-row"><span class="b-label">Tesla SC stations</span><span class="b-track"><span class="b-fill" style="width:35%"></span></span><span class="b-val">≈35 <small>Oct 2024</small></span></div>
+        <div class="bar-row"><span class="b-label">Opened to rivals</span><span class="b-track"><span class="b-fill" style="width:19%"></span></span><span class="b-val">19 <small>sites · Feb 2026</small></span></div>
+      </div>
+      <p class="src">Sources: EMA via BienInformado (fast charging +86.1% in 2025; 52,000+ private points); Latamobility; Motor Pasión.</p>
+    </div>
+
+    <div class="chart" aria-label="Competitive pressure: BYD Mexico sales">
+      <p class="chart-title">The Chinese benchmark Tesla never matched</p>
+      <p class="chart-sub">BYD Mexico unit sales · triangulated press figures · Tesla does not disclose</p>
+      <div class="bars">
+        <div class="bar-row"><span class="b-label">BYD · 2024</span><span class="b-track"><span class="b-fill" style="width:47%"></span></span><span class="b-val">≈40,000</span></div>
+        <div class="bar-row"><span class="b-label">BYD · 2025</span><span class="b-track"><span class="b-fill acc" style="width:100%"></span></span><span class="b-val">≈85,000</span></div>
+        <div class="bar-row"><span class="b-label">Chinese brands · 2025</span><span class="b-track"><span class="b-fill" style="width:100%"></span></span><span class="b-val">≈244,000 <small>≈15% of market</small></span></div>
+      </div>
+      <p class="src">Sources: El Economista via ICCT; El Imparcial. Tesla's Mexican volumes remain undisclosed and estimated in the low thousands annually.</p>
+    </div>
+
+    <div class="dash-kpis" role="group" aria-label="Trade and policy context">
+      <div class="kpi hot"><span class="num">50<span class="u">%</span></span><span class="cap">Mexico tariff on non-FTA EV imports from Jan 1, 2026</span></div>
+      <div class="kpi"><span class="num">25<span class="u">%</span></span><span class="cap">US Section 232 auto tariff; ≈15% effective on MX content</span></div>
+      <div class="kpi"><span class="num">−2.7<span class="u">%</span></span><span class="cap">Mexican light-vehicle exports, 2025</span></div>
+      <div class="kpi"><span class="num">86<span class="u">%</span></span><span class="cap">Plan México immediate tax deduction for electromobility</span></div>
+    </div>
+  </section>
+
+  <!-- ================= 07 LESSONS ================= -->
+  <section class="block" id="lessons">
+    <div class="sec-head">
+      <p class="sec-no">Section 07 — Synthesis</p>
+      <h2>Key lessons learned</h2>
+      <p class="lede">For EV entrants, for Mexican industrial policy, and for anyone reading nearshoring headlines: the decade compresses into six lessons.</p>
+    </div>
+
+    <div class="lessons">
+      <div class="lesson"><span class="l-no">1</span><div class="l-body"><h3>Ecosystem before volume</h3><p>Flagship retail (2015), first-in-region Superchargers (2016), corridor build-out, then price laddering: Tesla's sequence built a durable premium position and outsized cultural influence — the "Tesla effect" that normalized EVs in Mexico — on low-thousands annual volumes. Infrastructure and narrative investment precede and enable volume, not the reverse.</p></div></div>
+      <div class="lesson"><span class="l-no">2</span><div class="l-body"><h3>In low-penetration markets, charging is the moat</h3><p>Thirty-five stations and the 2026 NACS opening gave Tesla leverage no Mexican rival holds: competitors sell more cars but control no infrastructure. The 19 sites opened to Audi and Porsche convert the network into a multi-brand utility whose value compounds with every third-party session.</p></div></div>
+      <div class="lesson"><span class="l-no">3</span><div class="l-body"><h3>Price elasticity beats brand purity — but has a floor</h3><p>A 29% peso price cut shows Tesla will trade margin for volume; yet even 626,500 pesos cannot reach the sub-US$30,000 core where 41% of demand lives. Emerging-market EV volume requires a genuinely cheaper architecture — precisely the car the cancelled Gigafactory was meant to build.</p></div></div>
+      <div class="lesson"><span class="l-no">4</span><div class="l-body"><h3>Executive localization cannot outrun capital allocation</h3><p>Gutiérrez brought world-class commercial operating skill, but a country manager cannot override a freeze decided in Austin. Her two-year tenure bracketed the pause era almost exactly; her unheralded 2026 exit signals Tesla's regional de-prioritization.</p></div></div>
+      <div class="lesson"><span class="l-no">5</span><div class="l-body"><h3>Sequence public money against private milestones</h3><p>Nuevo León committed 2.63bn pesos and built real infrastructure — permits, a 16.9 km pipeline, access roads — against a private commitment with no disclosed construction contract or penalty clauses, whose headline figure tripled ($5bn→$15bn) without a single groundbreaking. Announcement risk is now the canonical case study.</p></div></div>
+      <div class="lesson"><span class="l-no">6</span><div class="l-body"><h3>Tariffs are now a first-order site-selection variable</h3><p>U.S. Section 232 tariffs killed Giga Mexico's export logic exactly as Musk's pause rationale predicted; Mexico's own 50% non-FTA tariff then reshuffled the domestic field in favor of U.S.-built Teslas. In the new trade regime, policy exposure belongs in the first spreadsheet, not the risk appendix.</p></div></div>
+    </div>
+
+    <p class="note">Methodology: compiled November 2026 from 60 sources (Section 08). Where sources conflict — the December 2015 sales start vs. the 2017 "first formal store" framing; US$143m vs. US$153m conversions of the 2.63bn-peso incentive — both framings are retained. Tesla, BYD and several Chinese brands do not report to INEGI/AMIA; their volumes are triangulated estimates.</p>
+  </section>
+  </main>
+</div>
+
+<!-- ================= 08 SOURCES ================= -->
+<footer class="sources" id="sources">
+  <div class="src-inner">
+    <p class="sec-no">Section 08 — Bibliography</p>
+    <h2>Sources &amp; references</h2>
+    <p class="lede">Sixty sources consulted for this dossier, grouped by subject. Links open the original publication. Compiled November 2026.</p>
+
+    <div class="src-groups">
+      <div class="src-group">
+        <h3>Gigafactory Mexico &amp; Industrial Policy</h3>
+        <ol>
+          <li><a href="https://mexiconewsdaily.com/business/how-much-is-tesla-going-to-invest-in-nuevo-leon/" target="_blank" rel="noopener">How much is Tesla going to invest in Nuevo León?</a><span class="outlet">Mexico News Daily</span></li>
+          <li><a href="https://mexiconewsdaily.com/business/musk-says-tesla-gigafactory-in-mexico-paused-because-of-potential-trump-tariffs/" target="_blank" rel="noopener">Musk says Tesla gigafactory paused over potential Trump tariffs</a><span class="outlet">Mexico News Daily</span></li>
+          <li><a href="https://mexiconewsdaily.com/business/ebrard-meeting-elon-musk-tesla-gigafactory-mexico/" target="_blank" rel="noopener">Ebrard: meeting with Elon Musk on Gigafactory Mexico</a><span class="outlet">Mexico News Daily</span></li>
+          <li><a href="https://mexiconewsdaily.com/business/tesla-nuevo-leon-factory-january/" target="_blank" rel="noopener">Tesla Nuevo León factory (Jan 2023)</a><span class="outlet">Mexico News Daily</span></li>
+          <li><a href="https://electrek.co/2024/07/24/tesla-officially-pauses-giga-mexico-project-over-potential-trump-win/" target="_blank" rel="noopener">Tesla officially pauses Giga Mexico over potential Trump win</a><span class="outlet">Electrek · Jul 24, 2024</span></li>
+          <li><a href="https://electrek.co/2023/09/07/tesla-gigafactory-mexico-online-way-later-than-expected/" target="_blank" rel="noopener">Gigafactory Mexico online way later than expected</a><span class="outlet">Electrek · Sep 7, 2023</span></li>
+          <li><a href="https://www.fdiintelligence.com/content/f8b7020e-13a4-5d9f-bccf-6dc2a2d547f5" target="_blank" rel="noopener">Tesla's Mexico delay is a warning for nearshoring</a><span class="outlet">fDi Intelligence</span></li>
+          <li><a href="https://manufacturingdigital.com/digital-factory/timeline-teslas-construction-gigafactories" target="_blank" rel="noopener">Timeline: Tesla's construction of gigafactories</a><span class="outlet">Manufacturing Digital</span></li>
+          <li><a href="https://www.teslarati.com/tesla-gigafactory-mexico-project-mario/" target="_blank" rel="noopener">Tesla Gigafactory Mexico — "Project Mario"</a><span class="outlet">Teslarati</span></li>
+          <li><a href="https://elceo.com/negocios/el-paso-de-elon-musk-en-mexico-tesla-se-frena-pero-starlink-avanza/" target="_blank" rel="noopener">El paso de Elon Musk en México: Tesla se frena, pero Starlink avanza</a><span class="outlet">El CEO · 2026</span></li>
+          <li><a href="https://www.milenio.com/comunidad/mujer-pelea-terrenos-compro-musk-gigafactory-tesla-nuevo-leon" target="_blank" rel="noopener">Mujer pelea terrenos que compró Musk para Gigafactory</a><span class="outlet">Milenio</span></li>
+          <li><a href="https://www.univision.com/noticias/america-latina/tesla-fabrica-llega-dudas-monterrey-mexico-sabemos" target="_blank" rel="noopener">Tesla: la fábrica llega con dudas a Monterrey</a><span class="outlet">Univision</span></li>
+          <li><a href="https://www.elfinanciero.com.mx/empresas/2023/02/28/fabrica-de-tesla-en-mexico-los-compromisos-que-musk-hizo-con-amlo/" target="_blank" rel="noopener">Los compromisos que Musk hizo con AMLO</a><span class="outlet">El Financiero · Feb 28, 2023</span></li>
+          <li><a href="https://www.bloomberglinea.com/2023/02/20/amlo-discutira-con-elon-musk-falta-de-agua-en-nuevo-leon-para-planta-de-tesla/" target="_blank" rel="noopener">AMLO discutirá con Musk falta de agua en Nuevo León</a><span class="outlet">Bloomberg Línea</span></li>
+          <li><a href="https://www.bloomberglinea.com.br/2023/03/01/fabrica-da-tesla-no-mexico-exigira-investimentos-de-us-5-bilhoes-oficial/" target="_blank" rel="noopener">Fábrica da Tesla no México exigirá US$5 bilhões</a><span class="outlet">Bloomberg Línea Brasil</span></li>
+          <li><a href="https://www.bakerinstitute.org/research/why-tesla-planning-automobile-factory-mexico-reasons-may-surprise-you" target="_blank" rel="noopener">Why Tesla is planning an automobile factory in Mexico</a><span class="outlet">Baker Institute</span></li>
+          <li><a href="https://spanish.entrepreneur.com/noticias/amlo-dice-que-por-falta-de-agua-la-planta-de-tesla-no-se/446272" target="_blank" rel="noopener">AMLO: por falta de agua la planta de Tesla no se haría en NL</a><span class="outlet">Entrepreneur</span></li>
+          <li><a href="https://en.wikipedia.org/wiki/Gigafactory_Mexico" target="_blank" rel="noopener">Gigafactory Mexico</a><span class="outlet">Wikipedia</span></li>
+        </ol>
+      </div>
+
+      <div class="src-group">
+        <h3>Javier Verdura</h3>
+        <ol>
+          <li><a href="https://electrek.co/2014/07/27/javier-verdura-director-of-product-design-and-project-management-for-tesla-motors-pulls-back-the-curtain/" target="_blank" rel="noopener">Javier Verdura pulls back the curtain</a><span class="outlet">Electrek · Jul 27, 2014</span></li>
+          <li><a href="https://www.artcenter.edu/connect/dot-magazine/articles/supercharged-how-two-former-classmates-are-shaping-the-future-of-tesla.html" target="_blank" rel="noopener">Supercharged: shaping the future of Tesla</a><span class="outlet">ArtCenter College of Design</span></li>
+          <li><a href="https://www.allamericanspeakers.com/speakers/451038/Javier-Verdura" target="_blank" rel="noopener">Javier Verdura — speaker biography</a><span class="outlet">All American Speakers</span></li>
+          <li><a href="https://wdo.org/press-release/world-design-talks-mobility-in-toluca-mexico/" target="_blank" rel="noopener">World Design Talks: Mobility in Toluca</a><span class="outlet">World Design Organization · 2017</span></li>
+          <li><a href="https://www.udem.edu.mx/sites/default/files/2021-01/Revista-360-UDEM-02.pdf" target="_blank" rel="noopener">Revista 360 — Proyecto Helios (PDF)</a><span class="outlet">Universidad de Monterrey</span></li>
+          <li><a href="https://www.udem.edu.mx/es/institucional/noticia/se-adelanta-udem-al-futuro-con-nuevos-espacios-y-experiencias" target="_blank" rel="noopener">UDEM Global Community Professor</a><span class="outlet">UDEM · 2023</span></li>
+          <li><a href="https://finance.yahoo.com/news/just-time-holidays-tesla-mezcal-190000949.html" target="_blank" rel="noopener">Tesla Mezcal — Oaxaca barro negro bottle</a><span class="outlet">Yahoo Finance / PRNewswire · 2024</span></li>
+          <li><a href="https://www.idsa.org/industrial-design-universidad-de-monterrey/" target="_blank" rel="noopener">Industrial design at UDEM</a><span class="outlet">IDSA</span></li>
+          <li><a href="https://www.cnet.com/tech/tech-industry/cnet-en-espanol-the-20-most-influential-latinos-in-tech-of-2016/" target="_blank" rel="noopener">20 most influential Latinos in tech 2016</a><span class="outlet">CNET en Español</span></li>
+          <li><a href="https://www.speakersassociates.com/speaker/javier-verdura/" target="_blank" rel="noopener">Javier Verdura — profile</a><span class="outlet">Speakers Associates</span></li>
+        </ol>
+      </div>
+
+      <div class="src-group">
+        <h3>Teresa Gutiérrez Smith</h3>
+        <ol>
+          <li><a href="https://mexiconewsdaily.com/business/got-1-min-tesla-mexico-picks-ceo/" target="_blank" rel="noopener">Tesla Mexico picks CEO</a><span class="outlet">Mexico News Daily · Jan 2024</span></li>
+          <li><a href="https://www.bloomberglinea.com/latinoamerica/mexico/tesla-apunta-a-nueva-country-manager-en-mexico-con-una-ex-rappi/" target="_blank" rel="noopener">Tesla apunta a nueva country manager con una ex-Rappi</a><span class="outlet">Bloomberg Línea</span></li>
+          <li><a href="https://mexicobusiness.news/finance/news/rappi-appoints-new-ceo-former-ceo-moves-tesla" target="_blank" rel="noopener">Rappi appoints new CEO; former CEO moves to Tesla</a><span class="outlet">Mexico Business News</span></li>
+          <li><a href="https://www.teslarati.com/tesla-mexico-country-manager-teresa-gutierrez-smith/" target="_blank" rel="noopener">Tesla Mexico country manager Teresa Gutiérrez Smith</a><span class="outlet">Teslarati</span></li>
+          <li><a href="https://mexicosmt.com/tesla-appoints-teresa-gutierrez-smith-as-mexico-country-manager-amidst-gigafactory-expansion/" target="_blank" rel="noopener">Tesla appoints Gutiérrez Smith amid Gigafactory expansion</a><span class="outlet">Mexico SMT</span></li>
+          <li><a href="https://forbes.com.mx/las-100-mujeres-mas-poderosas-de-mexico-2025-llegamos-todas/" target="_blank" rel="noopener">Las 100 mujeres más poderosas de México 2025</a><span class="outlet">Forbes México</span></li>
+          <li><a href="https://avaltechweek.com/speaker?id" target="_blank" rel="noopener">Speaker program — "Former Country Manager, Tesla México y Latam"</a><span class="outlet">AVAL Tech Week · 2026</span></li>
+        </ol>
+      </div>
+
+      <div class="src-group">
+        <h3>Market, Charging &amp; Competition</h3>
+        <ol>
+          <li><a href="https://www.tresearch.mx/post/venta-de-autos-electricos" target="_blank" rel="noopener">Venta de autos eléctricos (INEGI series)</a><span class="outlet">TResearch</span></li>
+          <li><a href="https://theicct.org/publication/evolucion-del-mercado-de-vehiculos-electricos-ligeros-en-mexico-al-cierre-de-2024-jul25/" target="_blank" rel="noopener">Evolución del mercado de VE ligeros en México al cierre de 2024</a><span class="outlet">ICCT · Jul 2025</span></li>
+          <li><a href="https://bieninformado.mx/red-de-carga-para-vehiculos-electricos-en-mexico-crecio-26-en-2025/" target="_blank" rel="noopener">Red de carga para VE en México creció en 2025</a><span class="outlet">BienInformado / EMA</span></li>
+          <li><a href="https://latamobility.com/tesla-cuenta-con-35-supercargadores-en-mexico/" target="_blank" rel="noopener">Tesla cuenta con 35 supercargadores en México</a><span class="outlet">Latamobility · Oct 2024</span></li>
+          <li><a href="https://www.motorpasion.com.mx/industria/muchas-marcas-autos-compatibles-supercargadores-tesla-mexico-problema-que-nadie-compra-porque-ninguna-china" target="_blank" rel="noopener">Supercargadores Tesla abiertos a otras marcas</a><span class="outlet">Motor Pasión · Feb 2026</span></li>
+          <li><a href="https://www.motorpasion.com.mx/industria/tesla-model-3-precio-mexico" target="_blank" rel="noopener">Tesla Model 3 precio México</a><span class="outlet">Motor Pasión</span></li>
+          <li><a href="https://www.adn40.mx/es-tendencia/2025-02-10/precio-tesla-model-3-en-mexico-2025" target="_blank" rel="noopener">Precio del Tesla Model 3 en México 2025</a><span class="outlet">ADN40</span></li>
+          <li><a href="https://www.eleconomista.com.mx/empresas/byd-vendio-40-000-unidades-20250113-741657.html" target="_blank" rel="noopener">BYD vendió 40,000 unidades en 2024</a><span class="outlet">El Economista</span></li>
+          <li><a href="https://www.elimparcial.com/mexico/2026/01/14/mientras-autos-chinos-como-byd-ya-ganaron-mas-terreno-en-mexico-los-aranceles-del-50-de-claudia-sheinbaum-comenzaron-a-afectar-los-precios-el-empleo-y-el-comercio-en-este-y-otros-sectores-desde-el-1-de-enero/" target="_blank" rel="noopener">Autos chinos ganan terreno; aranceles del 50%</a><span class="outlet">El Imparcial · Jan 2026</span></li>
+          <li><a href="https://elceo.com/economia/byd-mg-motor-gac-y-geerly-empresas-que-pagaran-aranceles-del-50-por-importar-sus-vehiculos-electricos-a-mexico/" target="_blank" rel="noopener">BYD, MG, GAC y Geely pagarán aranceles del 50%</a><span class="outlet">El CEO</span></li>
+          <li><a href="https://zerocontrol.mx/arancel-50-autos-chinos-mexico-ventas-2026/" target="_blank" rel="noopener">Arancel 50% a autos chinos y ventas 2026</a><span class="outlet">Zero Control</span></li>
+          <li><a href="https://remedia.bio/index.php/2025/04/08/sube-26-venta-de-coches-electricos-e-hibridos-en-mexico/" target="_blank" rel="noopener">Sube 26% venta de coches eléctricos e híbridos</a><span class="outlet">Remedia / AMIA</span></li>
+          <li><a href="https://www.mordorintelligence.com/es/industry-reports/mexico-electric-car-market" target="_blank" rel="noopener">Mexico electric car market</a><span class="outlet">Mordor Intelligence</span></li>
+          <li><a href="https://mexicobusiness.news/es/automotive/news/mercado-automotor-mexicano-crece-45-pese-brechas-inegi-0" target="_blank" rel="noopener">Mercado automotor crece pese a brechas INEGI</a><span class="outlet">Mexico Business News / AMDA</span></li>
+          <li><a href="https://www.elcronistayucatan.mx/2021/06/30/tesla-abre-tienda-en-merida/" target="_blank" rel="noopener">Tesla abre tienda en Mérida</a><span class="outlet">El Cronista · 2021</span></li>
+          <li><a href="https://www.eluniversal.com.mx/autopistas/el-efecto-de-tesla-en-el-mercado-mexicano/" target="_blank" rel="noopener">El efecto de Tesla en el mercado mexicano</a><span class="outlet">El Universal</span></li>
+          <li><a href="https://es.wikipedia.org/wiki/Anexo:Marcas_y_modelos_de_autom%C3%B3viles_con_presencia_en_M%C3%A9xico" target="_blank" rel="noopener">Marcas y modelos de automóviles con presencia en México</a><span class="outlet">Wikipedia (es)</span></li>
+          <li><a href="https://es.wikipedia.org/wiki/Tesla_Supercharger" target="_blank" rel="noopener">Tesla Supercharger</a><span class="outlet">Wikipedia (es)</span></li>
+        </ol>
+      </div>
+
+      <div class="src-group">
+        <h3>Tariffs, Trade &amp; Policy</h3>
+        <ol>
+          <li><a href="https://mexicobusiness.news/es/trade-and-investment/news/aranceles-de-trump-2025-impacto-en-acero-y-autos" target="_blank" rel="noopener">Aranceles de Trump 2025: impacto en acero y autos</a><span class="outlet">Mexico Business News</span></li>
+          <li><a href="https://www.bloomberglinea.com/latinoamerica/mexico/sector-automotriz-preve-otro-ano-desafiante-por-incertidumbre-ante-revision-del-t-mec/" target="_blank" rel="noopener">Sector automotriz prevé año desafiante ante revisión del T-MEC</a><span class="outlet">Bloomberg Línea · 2026</span></li>
+          <li><a href="https://www.elimparcial.com/dinero/2026/04/21/eeuu-avisa-a-mexico-que-aranceles-llegaron-para-quedarse-y-no-bajaran-a-cero-en-el-t-mec-lo-que-presiona-exportaciones-que-dependen-en-mas-de-50-del-mercado-estadounidense-y-redefine-la-estrategia-industrial/" target="_blank" rel="noopener">EEUU avisa: aranceles llegaron para quedarse</a><span class="outlet">El Imparcial · Apr 2026</span></li>
+          <li><a href="https://tecnom.ai/blog/tendencias-y-expectativas-del-mercado-automotriz-mexicano-para-2025" target="_blank" rel="noopener">Tendencias del mercado automotriz mexicano 2025</a><span class="outlet">Tecnom</span></li>
+          <li><a href="https://latamobility.com/conoce-los-incentivos-fiscales-por-usar-vehiculos-electricos-en-mexico/" target="_blank" rel="noopener">Incentivos fiscales para VE en México</a><span class="outlet">Latamobility</span></li>
+          <li><a href="https://www.tyt.com.mx/nota/produccion-de-vehiculos-hibridos-y-electricos-en-mexico-crece-20-5-en-2025" target="_blank" rel="noopener">Producción de híbridos y eléctricos crece 20.5% en 2025</a><span class="outlet">TyT</span></li>
+          <li><a href="https://ez4motion.mx/planea-byd-vender-150-mil-autos-electricos-en-mexico-entre-2024-y-2025/" target="_blank" rel="noopener">BYD planea vender 150 mil autos eléctricos 2024–2025</a><span class="outlet">EZ4Motion</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <span>Tesla·MX Research Dossier</span>
+      <span>Single self-contained HTML · No external assets</span>
+      <span>Compiled November 2026</span>
+    </div>
+    <p class="disclaimer">This report is for general informational purposes only and does not constitute investment, legal, tax or professional advice. Figures involving non-reporting manufacturers (Tesla, BYD and several Chinese brands) are triangulated estimates; conflicting source framings are noted where relevant. All trademarks belong to their respective owners; this dossier is independent editorial research and is not affiliated with Tesla, Inc.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  /* Scrollspy: highlight the TOC entry for the section in view */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  var map = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) map.push({a:a, el:el});
+  });
+  if (!map.length) return;
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var current = map[0];
+    for (var i=0;i<map.length;i++){
+      if (map[i].el.offsetTop <= pos) current = map[i];
+    }
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if (current) current.a.classList.add('active');
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){
+      window.requestAnimationFrame(function(){ onScroll(); ticking = false; });
+      ticking = true;
+    }
+  }, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
